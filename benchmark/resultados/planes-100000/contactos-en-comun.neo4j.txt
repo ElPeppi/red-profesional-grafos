@@ -1,0 +1,12 @@
+ProduceResults@neo4j id  (filas 0, db hits 0)
+  Sort@neo4j id ASC  (filas 0, db hits 0)
+    Projection@neo4j c.id AS id  (filas 0, db hits 0)
+      Filter@neo4j NOT anon_2 = anon_1  (filas 0, db hits 0)
+        NodeHashJoin@neo4j c  (filas 0, db hits 0)
+          Filter@neo4j c:Usuario  (filas 3, db hits 3)
+            Expand(All)@neo4j (anon_0)-[anon_1:CONECTA_CON]-(c)  (filas 3, db hits 12)
+              NodeUniqueIndexSeek@neo4j UNIQUE anon_0:Usuario(id) WHERE id = $a  (filas 1, db hits 2)
+          Expand(All)@neo4j (anon_3)-[anon_2:CONECTA_CON]-(c)  (filas 9, db hits 15)
+            NodeUniqueIndexSeek@neo4j UNIQUE anon_3:Usuario(id) WHERE id = $b  (filas 1, db hits 2)
+
+Total db hits: 34

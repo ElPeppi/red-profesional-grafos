@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="440" viewBox="0 0 760 440" role="img" aria-label="Alcance a 4 saltos según tamaño de la red">
+<rect width="760" height="440" fill="#ffffff"/>
+<text x="24" y="32" font-family="'Segoe UI', system-ui, sans-serif" font-size="17" font-weight="600" fill="#1d2129">Alcance a 4 saltos según tamaño de la red</text>
+<text x="24" y="54" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#5c6170">Mientras más grande la red, más pesa recorrer sin memoria de lo visitado.</text>
+<circle cx="29" cy="76" r="5" fill="#2a78d6"/><text x="39" y="80" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129">Neo4j</text>
+<circle cx="94" cy="76" r="5" fill="#eb6834"/><text x="104" y="80" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129">PostgreSQL</text>
+<g transform="translate(76,96)">
+<line x1="0" x2="494" y1="280" y2="280" stroke="#e6e2d8" stroke-width="1"/><text x="-10" y="284" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="end">1</text>
+<line x1="0" x2="494" y1="140" y2="140" stroke="#e6e2d8" stroke-width="1"/><text x="-10" y="144" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="end">10</text>
+<line x1="0" x2="494" y1="0" y2="0" stroke="#e6e2d8" stroke-width="1"/><text x="-10" y="4" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="end">100</text>
+<line x1="0" x2="494" y1="280" y2="280" stroke="#5c6170" stroke-width="1"/>
+<text x="0" y="304" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129" text-anchor="middle">1.000</text>
+<text x="247" y="304" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129" text-anchor="middle">10.000</text>
+<text x="494" y="304" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129" text-anchor="middle">100.000</text>
+<text x="247" y="328" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="middle">Personas en la red</text>
+<text x="-52" y="140" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="middle" transform="rotate(-90 -52 140)">Mediana en ms (escala logarítmica)</text>
+<path d="M0.0,245.3 L247.0,184.8 L494.0,101.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0" cy="245.28374270934708" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/><circle cx="247" cy="184.75302812196117" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/><circle cx="494" cy="101.23104151079164" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<path d="M0.0,183.1 L247.0,99.8 L494.0,10.1" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0" cy="183.12488561256956" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/><circle cx="247" cy="99.80185309932449" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/><circle cx="494" cy="10.060441037483201" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/>
+<text x="508" y="8.060441037483201" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170">PostgreSQL</text><text x="508" y="23.0604410374832" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="600" fill="#1d2129">84,8 ms</text>
+<text x="508" y="99.23104151079164" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170">Neo4j</text><text x="508" y="114.23104151079164" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="600" fill="#1d2129">18,9 ms</text>
+</g>
+</svg>

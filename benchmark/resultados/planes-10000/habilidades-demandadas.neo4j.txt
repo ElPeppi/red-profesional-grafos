@@ -1,0 +1,8 @@
+ProduceResults@neo4j id, ofertas  (filas 10, db hits 0)
+  Top@neo4j ofertas DESC, id ASC LIMIT 10  (filas 10, db hits 0)
+    EagerAggregation@neo4j h.id AS id, count(o) AS ofertas  (filas 29, db hits 1600)
+      Filter@neo4j h:Habilidad  (filas 1600, db hits 1600)
+        Expand(All)@neo4j (o)-[anon_0:REQUIERE]->(h)  (filas 1600, db hits 5032)
+          NodeIndexSeek@neo4j RANGE INDEX o:Oferta(estado) WHERE estado = $autostring_0  (filas 450, db hits 451)
+
+Total db hits: 8683

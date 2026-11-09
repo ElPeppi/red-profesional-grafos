@@ -1,0 +1,380 @@
+{
+  "escala": 100000,
+  "fecha": "2026-11-08T03:55:08.797Z",
+  "versiones": {
+    "neo4j": "5.26.32",
+    "postgres": "17.11 (Debian 17.11-1.pgdg13+2)",
+    "node": "v22.18.0"
+  },
+  "equipo": {
+    "cpu": "Intel(R) Core(TM) i9-14900K",
+    "hilos": 32,
+    "ramGb": 32,
+    "sistema": "Windows_NT 10.0.26100"
+  },
+  "contenedores": "cada base: 4 CPU, 5 GB de RAM, 2 GB de caché (docker-compose.yml)",
+  "metodo": {
+    "calentamiento": 5,
+    "repeticiones": 30,
+    "limiteMs": 60000,
+    "cronometro": "cliente, de enviar a recibir todas las filas"
+  },
+  "consultas": [
+    {
+      "nombre": "ida-y-vuelta",
+      "descripcion": "Consulta trivial: costo fijo de red, protocolo y driver, sin trabajo de la base",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 0.85,
+          "mediana": 1.05,
+          "p95": 1.44,
+          "maximo": 1.45,
+          "media": 1.07
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 0.2,
+          "mediana": 0.24,
+          "p95": 0.36,
+          "maximo": 0.47,
+          "media": 0.26
+        }
+      }
+    },
+    {
+      "nombre": "buscar-por-id",
+      "descripcion": "Una persona por su id",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 0.97,
+          "mediana": 1.13,
+          "p95": 1.5,
+          "maximo": 1.71,
+          "media": 1.2
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 0.2,
+          "mediana": 0.31,
+          "p95": 0.47,
+          "maximo": 0.53,
+          "media": 0.32
+        }
+      }
+    },
+    {
+      "nombre": "listar-pagina",
+      "descripcion": "Página de 20 personas ordenadas por id, en una posición al azar",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 1.71,
+          "mediana": 4.83,
+          "p95": 9.43,
+          "maximo": 13.3,
+          "media": 5.25
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 0.65,
+          "mediana": 4.42,
+          "p95": 7.36,
+          "maximo": 7.73,
+          "media": 4.17
+        }
+      }
+    },
+    {
+      "nombre": "habilidades-demandadas",
+      "descripcion": "Las 10 habilidades que más piden las ofertas abiertas",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 6.45,
+          "mediana": 7.81,
+          "p95": 9.05,
+          "maximo": 9.12,
+          "media": 7.81
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 3.17,
+          "mediana": 3.41,
+          "p95": 4.4,
+          "maximo": 4.47,
+          "media": 3.54
+        }
+      }
+    },
+    {
+      "nombre": "contactos-en-comun",
+      "descripcion": "Contactos que comparten dos personas",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 1.03,
+          "mediana": 1.25,
+          "p95": 1.98,
+          "maximo": 2.37,
+          "media": 1.35
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 0.37,
+          "mediana": 0.44,
+          "p95": 0.62,
+          "maximo": 0.75,
+          "media": 0.46
+        }
+      }
+    },
+    {
+      "nombre": "amigos-de-amigos",
+      "descripcion": "Sugerencias a dos saltos, por cantidad de contactos en común",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 1.18,
+          "mediana": 1.99,
+          "p95": 3.03,
+          "maximo": 3.18,
+          "media": 2
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 0.38,
+          "mediana": 0.68,
+          "p95": 1.49,
+          "maximo": 1.49,
+          "media": 0.77
+        }
+      }
+    },
+    {
+      "nombre": "alcance-1",
+      "descripcion": "Personas distintas a 1 salto o menos",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 1,
+          "mediana": 1.28,
+          "p95": 1.73,
+          "maximo": 1.94,
+          "media": 1.33
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 0.25,
+          "mediana": 0.35,
+          "p95": 0.45,
+          "maximo": 0.61,
+          "media": 0.34
+        }
+      }
+    },
+    {
+      "nombre": "alcance-2",
+      "descripcion": "Personas distintas a 2 saltos o menos",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 1.19,
+          "mediana": 1.63,
+          "p95": 2.1,
+          "maximo": 2.32,
+          "media": 1.64
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 0.36,
+          "mediana": 0.63,
+          "p95": 1.4,
+          "maximo": 1.46,
+          "media": 0.74
+        }
+      }
+    },
+    {
+      "nombre": "alcance-3",
+      "descripcion": "Personas distintas a 3 saltos o menos",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 1.66,
+          "mediana": 3.76,
+          "p95": 11.04,
+          "maximo": 15.54,
+          "media": 4.91
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 1.17,
+          "mediana": 6.27,
+          "p95": 24.63,
+          "maximo": 24.77,
+          "media": 8.56
+        }
+      }
+    },
+    {
+      "nombre": "alcance-4",
+      "descripcion": "Personas distintas a 4 saltos o menos",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 4.99,
+          "mediana": 18.94,
+          "p95": 46.66,
+          "maximo": 49.53,
+          "media": 22.28
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 13.37,
+          "mediana": 87.81,
+          "p95": 211.98,
+          "maximo": 257.08,
+          "media": 102.27
+        }
+      }
+    },
+    {
+      "nombre": "camino",
+      "descripcion": "Saltos del camino más corto entre dos personas, hasta 6",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 0.9,
+          "mediana": 1.15,
+          "p95": 2.16,
+          "maximo": 2.39,
+          "media": 1.25
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 366.92,
+          "mediana": 702.84,
+          "p95": 894.62,
+          "maximo": 947.6,
+          "media": 711.69
+        }
+      }
+    },
+    {
+      "nombre": "camino-procedimiento",
+      "descripcion": "Lo mismo en PostgreSQL con un procedimiento que hace BFS y se detiene al llegar",
+      "neo4j": {
+        "estado": "no aplica"
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 17.13,
+          "mediana": 297.48,
+          "p95": 588.79,
+          "maximo": 722.21,
+          "media": 290.09
+        }
+      }
+    },
+    {
+      "nombre": "candidatos",
+      "descripcion": "Candidatos para una oferta: habilidades, contactos en la empresa y ciudad (como la app)",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 204.2,
+          "mediana": 394.61,
+          "p95": 695.28,
+          "maximo": 786.49,
+          "media": 421.22
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 184.73,
+          "mediana": 378.21,
+          "p95": 604.56,
+          "maximo": 616.51,
+          "media": 365.39
+        }
+      }
+    },
+    {
+      "nombre": "insertar-conexiones",
+      "descripcion": "Escribir 1 000 conexiones nuevas en una transacción",
+      "neo4j": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 63.03,
+          "mediana": 66.91,
+          "p95": 70.88,
+          "maximo": 72.15,
+          "media": 67.1
+        }
+      },
+      "postgres": {
+        "estado": "medida",
+        "tiempos": {
+          "n": 30,
+          "minimo": 65.63,
+          "mediana": 70.45,
+          "p95": 78.96,
+          "maximo": 79.35,
+          "media": 71.1
+        }
+      }
+    }
+  ]
+}

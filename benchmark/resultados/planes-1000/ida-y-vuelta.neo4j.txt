@@ -1,0 +1,4 @@
+ProduceResults@neo4j uno  (filas 1, db hits 0)
+  Projection@neo4j $autoint_0 AS uno  (filas 1, db hits 0)
+
+Total db hits: 0

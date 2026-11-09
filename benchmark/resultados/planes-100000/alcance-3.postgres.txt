@@ -1,0 +1,25 @@
+Aggregate  (cost=1990.36..1990.37 rows=1 width=8) (actual time=1.098..1.099 rows=1 loops=1)
+  Buffers: shared hit=787
+  CTE alcance
+    ->  Recursive Union  (cost=0.00..1952.69 rows=521 width=36) (actual time=0.002..0.647 rows=739 loops=1)
+          Buffers: shared hit=787
+          ->  Result  (cost=0.00..0.01 rows=1 width=36) (actual time=0.001..0.001 rows=1 loops=1)
+          ->  Nested Loop  (cost=0.42..194.75 rows=52 width=10) (actual time=0.010..0.139 rows=199 loops=4)
+                Buffers: shared hit=787
+                ->  WorkTable Scan on alcance a  (cost=0.00..0.22 rows=3 width=36) (actual time=0.003..0.004 rows=11 loops=4)
+                      Filter: (nivel < 3)
+                      Rows Removed by Filter: 174
+                ->  Index Only Scan using conexiones_pkey on conexiones c  (cost=0.42..64.63 rows=17 width=12) (actual time=0.004..0.012 rows=19 loops=43)
+                      Index Cond: (usuario_id = a.id)
+                      Heap Fetches: 796
+                      Buffers: shared hit=787
+  ->  Sort  (cost=35.08..36.37 rows=518 width=32) (actual time=1.052..1.066 rows=737 loops=1)
+        Sort Key: alcance.id
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=787
+        ->  CTE Scan on alcance  (cost=0.00..11.72 rows=518 width=32) (actual time=0.019..0.726 rows=737 loops=1)
+              Filter: (id <> 'u60271'::text)
+              Rows Removed by Filter: 2
+              Buffers: shared hit=787
+Planning Time: 0.093 ms
+Execution Time: 1.129 ms

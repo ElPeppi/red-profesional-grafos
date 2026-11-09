@@ -1,0 +1,4 @@
+Result  (cost=0.00..0.26 rows=1 width=4) (actual time=34.057..34.058 rows=1 loops=1)
+  Buffers: shared hit=2781, local hit=35931 read=9 dirtied=124 written=125
+Planning Time: 0.006 ms
+Execution Time: 34.063 ms

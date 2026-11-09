@@ -1,0 +1,45 @@
+Limit  (cost=211.43..211.46 rows=10 width=12) (actual time=0.197..0.199 rows=10 loops=1)
+  Buffers: shared hit=98
+  ->  Sort  (cost=211.43..211.69 rows=101 width=12) (actual time=0.196..0.197 rows=10 loops=1)
+        Sort Key: (count(*)) DESC, y.contacto_id
+        Sort Method: top-N heapsort  Memory: 25kB
+        Buffers: shared hit=98
+        ->  HashAggregate  (cost=208.24..209.25 rows=101 width=12) (actual time=0.169..0.176 rows=109 loops=1)
+              Group Key: y.contacto_id
+              Batches: 1  Memory Usage: 24kB
+              Buffers: shared hit=98
+              ->  Hash Anti Join  (cost=33.44..207.74 rows=101 width=4) (actual time=0.050..0.150 rows=140 loops=1)
+                    Hash Cond: (y.contacto_id = z.contacto_id)
+                    Buffers: shared hit=98
+                    ->  Nested Loop  (cost=8.70..181.72 rows=102 width=4) (actual time=0.029..0.117 rows=144 loops=1)
+                          Buffers: shared hit=93
+                          ->  Bitmap Heap Scan on conexiones x  (cost=4.34..24.65 rows=7 width=4) (actual time=0.015..0.016 rows=8 loops=1)
+                                Recheck Cond: (usuario_id = 'u594'::text)
+                                Heap Blocks: exact=3
+                                Buffers: shared hit=5
+                                ->  Bitmap Index Scan on conexiones_pkey  (cost=0.00..4.34 rows=7 width=0) (actual time=0.010..0.010 rows=8 loops=1)
+                                      Index Cond: (usuario_id = 'u594'::text)
+                                      Buffers: shared hit=2
+                          ->  Bitmap Heap Scan on conexiones y  (cost=4.36..22.34 rows=10 width=8) (actual time=0.006..0.011 rows=18 loops=8)
+                                Recheck Cond: (x.contacto_id = usuario_id)
+                                Filter: (contacto_id <> 'u594'::text)
+                                Rows Removed by Filter: 1
+                                Heap Blocks: exact=72
+                                Buffers: shared hit=88
+                                ->  Bitmap Index Scan on conexiones_pkey  (cost=0.00..4.36 rows=10 width=0) (actual time=0.004..0.004 rows=19 loops=8)
+                                      Index Cond: (usuario_id = x.contacto_id)
+                                      Buffers: shared hit=16
+                    ->  Hash  (cost=24.65..24.65 rows=7 width=4) (actual time=0.015..0.015 rows=8 loops=1)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=5
+                          ->  Bitmap Heap Scan on conexiones z  (cost=4.34..24.65 rows=7 width=4) (actual time=0.007..0.010 rows=8 loops=1)
+                                Recheck Cond: (usuario_id = 'u594'::text)
+                                Heap Blocks: exact=3
+                                Buffers: shared hit=5
+                                ->  Bitmap Index Scan on conexiones_pkey  (cost=0.00..4.34 rows=7 width=0) (actual time=0.006..0.006 rows=8 loops=1)
+                                      Index Cond: (usuario_id = 'u594'::text)
+                                      Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=6
+Planning Time: 0.264 ms
+Execution Time: 0.242 ms

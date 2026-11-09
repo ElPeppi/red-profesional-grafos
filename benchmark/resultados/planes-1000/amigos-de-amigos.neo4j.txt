@@ -1,0 +1,13 @@
+ProduceResults@neo4j id, comunes  (filas 10, db hits 0)
+  Top@neo4j comunes DESC, id ASC LIMIT 10  (filas 10, db hits 0)
+    EagerAggregation@neo4j cache[s.id] AS id, count(DISTINCT c) AS comunes  (filas 109, db hits 0)
+      Filter@neo4j NOT s = u AND NOT anon_1 = anon_0 AND s:Usuario  (filas 140, db hits 140)
+        TriadicSelection@neo4j WHERE NOT (u)--(s)  (filas 148, db hits 0)
+          Filter@neo4j c:Usuario  (filas 8, db hits 8)
+            Expand(All)@neo4j (u)-[anon_0:CONECTA_CON]-(c)  (filas 8, db hits 15)
+              NodeUniqueIndexSeek@neo4j UNIQUE u:Usuario(id) WHERE id = $a  (filas 1, db hits 2)
+          CacheProperties@neo4j cache[s.id]  (filas 152, db hits 152)
+            Expand(All)@neo4j (c)-[anon_1:CONECTA_CON]-(s)  (filas 152, db hits 224)
+              Argument@neo4j c, anon_0  (filas 8, db hits 0)
+
+Total db hits: 541

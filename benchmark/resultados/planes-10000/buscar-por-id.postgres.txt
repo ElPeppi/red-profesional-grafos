@@ -1,0 +1,5 @@
+Index Scan using usuarios_pkey on usuarios  (cost=0.29..8.30 rows=1 width=36) (actual time=0.020..0.021 rows=1 loops=1)
+  Index Cond: (id = 'u894'::text)
+  Buffers: shared hit=3
+Planning Time: 0.048 ms
+Execution Time: 0.029 ms

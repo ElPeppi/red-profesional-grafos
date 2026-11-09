@@ -1,0 +1,36 @@
+Limit  (cost=1229.54..1229.56 rows=10 width=14) (actual time=0.117..0.119 rows=10 loops=1)
+  Buffers: shared hit=42
+  ->  Sort  (cost=1229.54..1230.49 rows=381 width=14) (actual time=0.117..0.118 rows=10 loops=1)
+        Sort Key: (count(*)) DESC, y.contacto_id
+        Sort Method: top-N heapsort  Memory: 25kB
+        Buffers: shared hit=42
+        ->  HashAggregate  (cost=1217.50..1221.31 rows=381 width=14) (actual time=0.098..0.102 rows=37 loops=1)
+              Group Key: y.contacto_id
+              Batches: 1  Memory Usage: 37kB
+              Buffers: shared hit=42
+              ->  Hash Anti Join  (cost=65.69..1215.59 rows=381 width=6) (actual time=0.057..0.092 rows=37 loops=1)
+                    Hash Cond: (y.contacto_id = z.contacto_id)
+                    Buffers: shared hit=42
+                    ->  Nested Loop  (cost=0.85..1145.94 rows=381 width=6) (actual time=0.026..0.058 rows=37 loops=1)
+                          Buffers: shared hit=36
+                          ->  Index Only Scan using conexiones_pkey on conexiones x  (cost=0.42..64.63 rows=17 width=6) (actual time=0.008..0.009 rows=4 loops=1)
+                                Index Cond: (usuario_id = 'u60271'::text)
+                                Heap Fetches: 4
+                                Buffers: shared hit=6
+                          ->  Index Only Scan using conexiones_pkey on conexiones y  (cost=0.42..63.44 rows=17 width=12) (actual time=0.008..0.012 rows=9 loops=4)
+                                Index Cond: (usuario_id = x.contacto_id)
+                                Filter: (contacto_id <> 'u60271'::text)
+                                Rows Removed by Filter: 1
+                                Heap Fetches: 41
+                                Buffers: shared hit=30
+                    ->  Hash  (cost=64.63..64.63 rows=17 width=6) (actual time=0.013..0.013 rows=4 loops=1)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=6
+                          ->  Index Only Scan using conexiones_pkey on conexiones z  (cost=0.42..64.63 rows=17 width=6) (actual time=0.007..0.010 rows=4 loops=1)
+                                Index Cond: (usuario_id = 'u60271'::text)
+                                Heap Fetches: 4
+                                Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=8
+Planning Time: 0.324 ms
+Execution Time: 0.140 ms

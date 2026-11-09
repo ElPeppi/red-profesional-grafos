@@ -1,0 +1,14 @@
+Nested Loop  (cost=0.85..209.08 rows=1 width=6) (actual time=0.021..0.022 rows=0 loops=1)
+  Buffers: shared hit=13
+  ->  Index Only Scan using conexiones_pkey on conexiones x  (cost=0.42..64.63 rows=17 width=6) (actual time=0.005..0.006 rows=3 loops=1)
+        Index Cond: (usuario_id = 'u96487'::text)
+        Heap Fetches: 3
+        Buffers: shared hit=4
+  ->  Index Only Scan using conexiones_pkey on conexiones y  (cost=0.42..8.45 rows=1 width=6) (actual time=0.005..0.005 rows=0 loops=3)
+        Index Cond: ((usuario_id = x.contacto_id) AND (contacto_id = 'u16097'::text))
+        Heap Fetches: 0
+        Buffers: shared hit=9
+Planning:
+  Buffers: shared hit=8
+Planning Time: 0.219 ms
+Execution Time: 0.030 ms

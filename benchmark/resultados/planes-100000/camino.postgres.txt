@@ -1,0 +1,21 @@
+Aggregate  (cost=1964.42..1964.43 rows=1 width=4) (actual time=1390.802..1390.804 rows=1 loops=1)
+  Buffers: shared hit=1787945
+  CTE bfs
+    ->  Recursive Union  (cost=0.00..1952.69 rows=521 width=36) (actual time=0.003..1357.164 rows=257073 loops=1)
+          Buffers: shared hit=1787945
+          ->  Result  (cost=0.00..0.01 rows=1 width=36) (actual time=0.001..0.002 rows=1 loops=1)
+          ->  Nested Loop  (cost=0.42..194.75 rows=52 width=10) (actual time=0.229..142.142 rows=262311 loops=7)
+                Buffers: shared hit=1787945
+                ->  WorkTable Scan on bfs b  (cost=0.00..0.22 rows=3 width=36) (actual time=0.223..1.603 rows=22629 loops=7)
+                      Filter: (nivel < 6)
+                      Rows Removed by Filter: 14096
+                ->  Index Only Scan using conexiones_pkey on conexiones c  (cost=0.42..64.63 rows=17 width=12) (actual time=0.003..0.006 rows=12 loops=158400)
+                      Index Cond: (usuario_id = b.id)
+                      Heap Fetches: 1836178
+                      Buffers: shared hit=1787945
+  ->  CTE Scan on bfs  (cost=0.00..11.72 rows=3 width=4) (actual time=87.339..1390.788 rows=3 loops=1)
+        Filter: (id = 'u16097'::text)
+        Rows Removed by Filter: 257070
+        Buffers: shared hit=1787945
+Planning Time: 0.104 ms
+Execution Time: 1393.867 ms

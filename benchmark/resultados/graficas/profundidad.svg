@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="440" viewBox="0 0 760 440" role="img" aria-label="Alcance según profundidad, 100.000 personas">
+<rect width="760" height="440" fill="#ffffff"/>
+<text x="24" y="32" font-family="'Segoe UI', system-ui, sans-serif" font-size="17" font-weight="600" fill="#1d2129">Alcance según profundidad, 100.000 personas</text>
+<text x="24" y="54" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#5c6170">Personas distintas a k saltos o menos. Neo4j poda lo ya visitado; la CTE recursiva no puede.</text>
+<circle cx="29" cy="76" r="5" fill="#2a78d6"/><text x="39" y="80" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129">Neo4j</text>
+<circle cx="94" cy="76" r="5" fill="#eb6834"/><text x="104" y="80" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129">PostgreSQL</text>
+<g transform="translate(76,96)">
+<line x1="0" x2="494" y1="280" y2="280" stroke="#e6e2d8" stroke-width="1"/><text x="-10" y="284" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="end">0,1</text>
+<line x1="0" x2="494" y1="186.66666666666669" y2="186.66666666666669" stroke="#e6e2d8" stroke-width="1"/><text x="-10" y="190.66666666666669" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="end">1</text>
+<line x1="0" x2="494" y1="93.33333333333334" y2="93.33333333333334" stroke="#e6e2d8" stroke-width="1"/><text x="-10" y="97.33333333333334" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="end">10</text>
+<line x1="0" x2="494" y1="0" y2="0" stroke="#e6e2d8" stroke-width="1"/><text x="-10" y="4" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="end">100</text>
+<line x1="0" x2="494" y1="280" y2="280" stroke="#5c6170" stroke-width="1"/>
+<text x="0" y="304" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129" text-anchor="middle">1 salto</text>
+<text x="164.66666666666666" y="304" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129" text-anchor="middle">2 saltos</text>
+<text x="329.3333333333333" y="304" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129" text-anchor="middle">3 saltos</text>
+<text x="494" y="304" font-family="'Segoe UI', system-ui, sans-serif" font-size="12.5" fill="#1d2129" text-anchor="middle">4 saltos</text>
+<text x="247" y="328" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="middle">Profundidad</text>
+<text x="-52" y="140" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170" text-anchor="middle" transform="rotate(-90 -52 140)">Mediana en ms (escala logarítmica)</text>
+<path d="M0.0,187.9 L164.7,178.3 L329.3,144.5 L494.0,67.5" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0" cy="187.90130480181716" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/><circle cx="164.66666666666666" cy="178.27552293232287" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/><circle cx="329.3333333333333" cy="144.4999326843996" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/><circle cx="494" cy="67.48736100719444" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<path d="M0.0,232.9 L164.7,211.6 L329.3,116.8 L494.0,6.7" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0" cy="232.8526686901421" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/><circle cx="164.66666666666666" cy="211.6432490831896" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/><circle cx="329.3333333333333" cy="116.83578414608797" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/><circle cx="494" cy="6.706960691655468" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/>
+<text x="508" y="4.706960691655468" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170">PostgreSQL</text><text x="508" y="19.706960691655468" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="600" fill="#1d2129">84,8 ms</text>
+<text x="508" y="65.48736100719444" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#5c6170">Neo4j</text><text x="508" y="80.48736100719444" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="600" fill="#1d2129">18,9 ms</text>
+</g>
+</svg>

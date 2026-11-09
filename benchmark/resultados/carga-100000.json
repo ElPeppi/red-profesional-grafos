@@ -1,0 +1,98 @@
+{
+  "escala": 100000,
+  "fecha": "2026-11-08T03:59:03.390Z",
+  "neo4j": {
+    "resumen": {
+      "usuarios": 100000,
+      "empresas": 2000,
+      "ofertas": 5000,
+      "proyectos": 5000,
+      "conexiones": 490653,
+      "tieneHabilidad": 476123,
+      "trabajaEn": 184479,
+      "participaEn": 25053,
+      "requiere": 17287,
+      "usa": 17523,
+      "postulaA": 19985,
+      "ofertasAbiertas": 4474,
+      "proyectosComunitarios": 1491,
+      "empleosActuales": 80914,
+      "gradoMaximo": 581,
+      "sumaNiveles": 1452086,
+      "personasPorCiudad": {
+        "barranquilla": 14968,
+        "bogota": 29678,
+        "cali": 15170,
+        "cartagena": 10078,
+        "medellin": 20095,
+        "monteria": 10011
+      }
+    },
+    "pasos": {
+      "limpiar": 852,
+      "ciudades": 9,
+      "habilidades": 12,
+      "usuarios": 2097,
+      "empresas": 65,
+      "ofertas": 123,
+      "proyectos": 106,
+      "conexiones": 7403,
+      "tiene_habilidad": 4063,
+      "trabaja_en": 2722,
+      "participa_en": 366,
+      "requiere": 168,
+      "usa": 126,
+      "postula_a": 282,
+      "total": 17567
+    },
+    "version": "5.26.32"
+  },
+  "postgres": {
+    "resumen": {
+      "usuarios": 100000,
+      "empresas": 2000,
+      "ofertas": 5000,
+      "proyectos": 5000,
+      "conexiones": 490653,
+      "tieneHabilidad": 476123,
+      "trabajaEn": 184479,
+      "participaEn": 25053,
+      "requiere": 17287,
+      "usa": 17523,
+      "postulaA": 19985,
+      "ofertasAbiertas": 4474,
+      "proyectosComunitarios": 1491,
+      "empleosActuales": 80914,
+      "gradoMaximo": 581,
+      "sumaNiveles": 1452086,
+      "personasPorCiudad": {
+        "barranquilla": 14968,
+        "bogota": 29678,
+        "cali": 15170,
+        "cartagena": 10078,
+        "medellin": 20095,
+        "monteria": 10011
+      }
+    },
+    "pasos": {
+      "limpiar": 13,
+      "ciudades": 5,
+      "habilidades": 4,
+      "usuarios": 209,
+      "empresas": 8,
+      "ofertas": 14,
+      "proyectos": 12,
+      "conexiones": 2339,
+      "tiene_habilidad": 941,
+      "trabaja_en": 416,
+      "participa_en": 54,
+      "requiere": 35,
+      "usa": 35,
+      "postula_a": 39,
+      "restricciones": 1517,
+      "total": 5637
+    },
+    "version": "17.11 (Debian 17.11-1.pgdg13+2)"
+  },
+  "coinciden": true
+}

@@ -1,0 +1,51 @@
+ProduceResults@neo4j id, faltan, puntaje  (filas 10, db hits 0)
+  Top@neo4j faltan ASC, puntaje DESC, id ASC LIMIT 10  (filas 10, db hits 0)
+    Projection@neo4j obligatorias - obligatoriasCumplidas AS faltan, ((cumple * $autodouble_1) / requeridas + (CASE
+  WHEN contactos > $autoint_2 THEN $autoint_3
+  ELSE contactos
+END * $autodouble_4) / $autodouble_5) + CASE
+  WHEN mismaCiudad OR o.modalidad = $autostring_6 THEN $autoint_7
+  ELSE $autoint_8
+END * $autodouble_9 AS puntaje, u.id AS id  (filas 113, db hits 196)
+      Apply@neo4j  (filas 113, db hits 0)
+        Apply@neo4j  (filas 113, db hits 0)
+          LetSemiApply@neo4j mismaCiudad  (filas 113, db hits 0)
+            Apply@neo4j  (filas 113, db hits 0)
+              EagerAggregation@neo4j o, e, u, count(*) AS cumple, count(CASE
+  WHEN r.obligatoria THEN $autoint_0
+END) AS obligatoriasCumplidas  (filas 113, db hits 248)
+                Filter@neo4j e:Empresa  (filas 248, db hits 248)
+                  AntiSemiApply@neo4j  (filas 248, db hits 0)
+                    Expand(All)@neo4j (o)<-[anon_0:PUBLICA]-(e)  (filas 253, db hits 3795)
+                      AntiSemiApply@neo4j  (filas 253, db hits 0)
+                        Filter@neo4j t.nivel >= cache[r.nivelMinimo] AND CoerceToPredicate(u.abiertoAOfertas) AND u:Usuario  (filas 255, db hits 1938)
+                          Expand(All)@neo4j (anon_1)<-[t:TIENE_HABILIDAD]-(u)  (filas 1003, db hits 1018)
+                            CacheProperties@neo4j cache[r.nivelMinimo]  (filas 5, db hits 5)
+                              Filter@neo4j anon_1:Habilidad  (filas 5, db hits 5)
+                                Expand(All)@neo4j (o)-[r:REQUIERE]->(anon_1)  (filas 5, db hits 15)
+                                  NodeUniqueIndexSeek@neo4j UNIQUE o:Oferta(id) WHERE id = $oferta  (filas 1, db hits 2)
+                        Expand(Into)@neo4j (u)-[anon_2:POSTULA_A]->(o)  (filas 0, db hits 4064)
+                          Argument@neo4j u, o  (filas 255, db hits 0)
+                    Filter@neo4j anon_3.actual = true  (filas 0, db hits 16)
+                      Expand(Into)@neo4j (u)-[anon_3:TRABAJA_EN]->(e)  (filas 16, db hits 5130)
+                        Argument@neo4j e, u  (filas 253, db hits 0)
+              EagerAggregation@neo4j count(*) AS obligatorias  (filas 113, db hits 0)
+                Filter@neo4j anon_6.obligatoria = true AND anon_7:Habilidad  (filas 339, db hits 904)
+                  Expand(All)@neo4j (o)-[anon_6:REQUIERE]->(anon_7)  (filas 565, db hits 1695)
+                    Argument@neo4j o  (filas 113, db hits 0)
+            Expand(Into)@neo4j (u)-[anon_11:VIVE_EN]->(anon_12)  (filas 0, db hits 2267)
+              Filter@neo4j anon_12:Ciudad  (filas 113, db hits 113)
+                Expand(All)@neo4j (o)-[anon_13:UBICADA_EN]->(anon_12)  (filas 113, db hits 1695)
+                  Argument@neo4j o, u  (filas 113, db hits 0)
+          EagerAggregation@neo4j count(*) AS requeridas  (filas 113, db hits 0)
+            Filter@neo4j anon_5:Habilidad  (filas 565, db hits 565)
+              Expand(All)@neo4j (o)-[anon_4:REQUIERE]->(anon_5)  (filas 565, db hits 1695)
+                Argument@neo4j o  (filas 113, db hits 0)
+        EagerAggregation@neo4j count(*) AS contactos  (filas 113, db hits 0)
+          Filter@neo4j anon_10.actual = true  (filas 20, db hits 50)
+            Expand(Into)@neo4j (anon_9)-[anon_10:TRABAJA_EN]->(e)  (filas 50, db hits 23395)
+              Filter@neo4j anon_9:Usuario  (filas 1032, db hits 1032)
+                Expand(All)@neo4j (u)-[anon_8:CONECTA_CON]-(anon_9)  (filas 1032, db hits 2041)
+                  Argument@neo4j e, u  (filas 113, db hits 0)
+
+Total db hits: 52132

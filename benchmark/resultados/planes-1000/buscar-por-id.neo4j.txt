@@ -1,0 +1,6 @@
+ProduceResults@neo4j id, nombre, email  (filas 1, db hits 0)
+  Projection@neo4j cache[u.id] AS id, cache[u.nombre] AS nombre, cache[u.email] AS email  (filas 1, db hits 0)
+    CacheProperties@neo4j cache[u.nombre], cache[u.email]  (filas 1, db hits 2)
+      NodeUniqueIndexSeek@neo4j UNIQUE u:Usuario(id) WHERE id = $a, cache[u.id]  (filas 1, db hits 2)
+
+Total db hits: 4

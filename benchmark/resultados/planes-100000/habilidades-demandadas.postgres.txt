@@ -1,0 +1,26 @@
+Limit  (cost=662.96..662.99 rows=10 width=16) (actual time=4.125..4.127 rows=10 loops=1)
+  Buffers: shared hit=248
+  ->  Sort  (cost=662.96..663.04 rows=29 width=16) (actual time=4.124..4.125 rows=10 loops=1)
+        Sort Key: (count(*)) DESC, r.habilidad_id
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=248
+        ->  HashAggregate  (cost=662.05..662.34 rows=29 width=16) (actual time=4.107..4.110 rows=29 loops=1)
+              Group Key: r.habilidad_id
+              Batches: 1  Memory Usage: 24kB
+              Buffers: shared hit=248
+              ->  Hash Join  (cost=206.43..584.71 rows=15468 width=8) (actual time=0.811..2.841 rows=15472 loops=1)
+                    Hash Cond: (r.oferta_id = o.id)
+                    Buffers: shared hit=248
+                    ->  Seq Scan on requiere r  (cost=0.00..332.87 rows=17287 width=13) (actual time=0.004..0.552 rows=17287 loops=1)
+                          Buffers: shared hit=160
+                    ->  Hash  (cost=150.50..150.50 rows=4474 width=5) (actual time=0.800..0.800 rows=4474 loops=1)
+                          Buckets: 8192  Batches: 1  Memory Usage: 230kB
+                          Buffers: shared hit=88
+                          ->  Seq Scan on ofertas o  (cost=0.00..150.50 rows=4474 width=5) (actual time=0.002..0.423 rows=4474 loops=1)
+                                Filter: (estado = 'abierta'::text)
+                                Rows Removed by Filter: 526
+                                Buffers: shared hit=88
+Planning:
+  Buffers: shared hit=12
+Planning Time: 0.186 ms
+Execution Time: 4.147 ms

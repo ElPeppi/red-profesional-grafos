@@ -1,0 +1,7 @@
+Limit  (cost=3452.25..3453.46 rows=20 width=6) (actual time=7.958..7.961 rows=20 loops=1)
+  Buffers: shared hit=11705
+  ->  Index Only Scan using usuarios_pkey on usuarios  (cost=0.42..6054.66 rows=100000 width=6) (actual time=0.029..6.671 rows=57035 loops=1)
+        Heap Fetches: 57035
+        Buffers: shared hit=11705
+Planning Time: 0.082 ms
+Execution Time: 7.973 ms

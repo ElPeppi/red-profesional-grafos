@@ -1,0 +1,7 @@
+ProduceResults@neo4j personas  (filas 1, db hits 0)
+  EagerAggregation@neo4j count(o) AS personas  (filas 1, db hits 0)
+    Filter@neo4j NOT o = u AND o:Usuario  (filas 733, db hits 733)
+      VarLengthExpand(Pruning,BFS,All)@neo4j (u)-[:CONECTA_CON*..3]-(o)   (filas 733, db hits 1147)
+        NodeUniqueIndexSeek@neo4j UNIQUE u:Usuario(id) WHERE id = $a  (filas 1, db hits 2)
+
+Total db hits: 1882

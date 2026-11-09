@@ -1,0 +1,7 @@
+ProduceResults@neo4j id  (filas 20, db hits 0)
+  Projection@neo4j cache[u.id] AS id  (filas 20, db hits 0)
+    Skip@neo4j $salto  (filas 20, db hits 0)
+      Limit@neo4j 20 + $salto  (filas 734, db hits 0)
+        NodeIndexScan@neo4j RANGE INDEX u:Usuario(id) WHERE id IS NOT NULL, cache[u.id]  (filas 734, db hits 735)
+
+Total db hits: 735

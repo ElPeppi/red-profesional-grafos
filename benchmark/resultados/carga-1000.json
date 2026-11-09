@@ -1,0 +1,98 @@
+{
+  "escala": 1000,
+  "fecha": "2026-11-08T03:58:12.450Z",
+  "neo4j": {
+    "resumen": {
+      "usuarios": 1000,
+      "empresas": 20,
+      "ofertas": 50,
+      "proyectos": 50,
+      "conexiones": 4683,
+      "tieneHabilidad": 4832,
+      "trabajaEn": 1617,
+      "participaEn": 244,
+      "requiere": 175,
+      "usa": 161,
+      "postulaA": 209,
+      "ofertasAbiertas": 44,
+      "proyectosComunitarios": 16,
+      "empleosActuales": 806,
+      "gradoMaximo": 61,
+      "sumaNiveles": 14646,
+      "personasPorCiudad": {
+        "barranquilla": 144,
+        "bogota": 322,
+        "cali": 148,
+        "cartagena": 90,
+        "medellin": 193,
+        "monteria": 103
+      }
+    },
+    "pasos": {
+      "limpiar": 9939,
+      "ciudades": 11,
+      "habilidades": 15,
+      "usuarios": 52,
+      "empresas": 29,
+      "ofertas": 36,
+      "proyectos": 34,
+      "conexiones": 86,
+      "tiene_habilidad": 69,
+      "trabaja_en": 48,
+      "participa_en": 29,
+      "requiere": 32,
+      "usa": 31,
+      "postula_a": 44,
+      "total": 541
+    },
+    "version": "5.26.32"
+  },
+  "postgres": {
+    "resumen": {
+      "usuarios": 1000,
+      "empresas": 20,
+      "ofertas": 50,
+      "proyectos": 50,
+      "conexiones": 4683,
+      "tieneHabilidad": 4832,
+      "trabajaEn": 1617,
+      "participaEn": 244,
+      "requiere": 175,
+      "usa": 161,
+      "postulaA": 209,
+      "ofertasAbiertas": 44,
+      "proyectosComunitarios": 16,
+      "empleosActuales": 806,
+      "gradoMaximo": 61,
+      "sumaNiveles": 14646,
+      "personasPorCiudad": {
+        "barranquilla": 144,
+        "bogota": 322,
+        "cali": 148,
+        "cartagena": 90,
+        "medellin": 193,
+        "monteria": 103
+      }
+    },
+    "pasos": {
+      "limpiar": 32,
+      "ciudades": 8,
+      "habilidades": 4,
+      "usuarios": 7,
+      "empresas": 5,
+      "ofertas": 4,
+      "proyectos": 4,
+      "conexiones": 23,
+      "tiene_habilidad": 12,
+      "trabaja_en": 7,
+      "participa_en": 5,
+      "requiere": 4,
+      "usa": 4,
+      "postula_a": 4,
+      "restricciones": 64,
+      "total": 165
+    },
+    "version": "17.11 (Debian 17.11-1.pgdg13+2)"
+  },
+  "coinciden": true
+}

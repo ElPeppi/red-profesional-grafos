@@ -1,0 +1,121 @@
+Limit  (cost=1405.98..1406.01 rows=10 width=20) (actual time=3.415..3.420 rows=10 loops=1)
+  Buffers: shared hit=4904
+  CTE o
+    ->  Seq Scan on ofertas  (cost=0.00..1.62 rows=1 width=22) (actual time=0.008..0.010 rows=1 loops=1)
+          Filter: (id = 'o7'::text)
+          Rows Removed by Filter: 49
+          Buffers: shared hit=1
+  CTE r
+    ->  Seq Scan on requiere  (cost=0.00..3.19 rows=5 width=10) (actual time=0.003..0.008 rows=5 loops=1)
+          Filter: (oferta_id = 'o7'::text)
+          Rows Removed by Filter: 170
+          Buffers: shared hit=1
+  InitPlan 3
+    ->  Aggregate  (cost=0.11..0.12 rows=1 width=8) (actual time=0.001..0.002 rows=1 loops=1)
+          ->  CTE Scan on r r_1  (cost=0.00..0.10 rows=3 width=0) (actual time=0.000..0.001 rows=3 loops=1)
+                Filter: obligatoria
+                Rows Removed by Filter: 2
+  InitPlan 4
+    ->  Aggregate  (cost=0.11..0.12 rows=1 width=8) (actual time=0.001..0.001 rows=1 loops=1)
+          ->  CTE Scan on r r_2  (cost=0.00..0.10 rows=5 width=0) (actual time=0.000..0.000 rows=5 loops=1)
+  ->  Sort  (cost=1400.93..1400.98 rows=21 width=20) (actual time=3.415..3.418 rows=10 loops=1)
+        Sort Key: (((InitPlan 3).col1 - c.obligatorias_cumplidas)), ((((('0.6'::double precision * (c.cumple)::double precision) / ((InitPlan 4).col1)::double precision) + (('0.3'::double precision * (LEAST((count(*)), '3'::bigint))::double precision) / '3'::double precision)) + ((0.1 * (CASE WHEN ((u.ciudad_id = o.ciudad_id) OR (o.modalidad = 'remoto'::text)) THEN 1 ELSE 0 END)::numeric))::double precision)) DESC, c.usuario_id
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=4904
+        ->  Nested Loop  (cost=249.56..1400.48 rows=21 width=20) (actual time=1.794..3.398 rows=113 loops=1)
+              Buffers: shared hit=4904
+              ->  Nested Loop  (cost=193.92..230.79 rows=21 width=124) (actual time=1.742..1.842 rows=113 loops=1)
+                    Buffers: shared hit=2472
+                    ->  CTE Scan on o  (cost=0.00..0.02 rows=1 width=96) (actual time=0.009..0.010 rows=1 loops=1)
+                          Buffers: shared hit=1
+                    ->  Hash Join  (cost=193.92..230.56 rows=21 width=28) (actual time=1.732..1.824 rows=113 loops=1)
+                          Hash Cond: (u.id = c.usuario_id)
+                          Buffers: shared hit=2471
+                          ->  Seq Scan on usuarios u  (cost=0.00..34.00 rows=1000 width=12) (actual time=0.003..0.038 rows=1000 loops=1)
+                                Buffers: shared hit=24
+                          ->  Hash  (cost=193.66..193.66 rows=21 width=20) (actual time=1.726..1.728 rows=113 loops=1)
+                                Buckets: 1024  Batches: 1  Memory Usage: 15kB
+                                Buffers: shared hit=2447
+                                ->  Subquery Scan on c  (cost=193.03..193.66 rows=21 width=20) (actual time=1.681..1.717 rows=113 loops=1)
+                                      Buffers: shared hit=2447
+                                      ->  GroupAggregate  (cost=193.03..193.45 rows=21 width=20) (actual time=1.681..1.712 rows=113 loops=1)
+                                            Group Key: t.usuario_id
+                                            Buffers: shared hit=2447
+                                            ->  Sort  (cost=193.03..193.08 rows=21 width=5) (actual time=1.679..1.686 rows=248 loops=1)
+                                                  Sort Key: t.usuario_id
+                                                  Sort Method: quicksort  Memory: 30kB
+                                                  Buffers: shared hit=2447
+                                                  ->  Nested Loop Anti Join  (cost=128.51..192.57 rows=21 width=5) (actual time=0.648..1.597 rows=248 loops=1)
+                                                        Join Filter: (p.oferta_id = o_1.id)
+                                                        Rows Removed by Join Filter: 49
+                                                        Buffers: shared hit=2447
+                                                        ->  Nested Loop  (cost=128.37..187.77 rows=23 width=37) (actual time=0.632..1.392 rows=250 loops=1)
+                                                              Buffers: shared hit=2171
+                                                              ->  Hash Right Anti Join  (cost=128.09..168.42 rows=61 width=37) (actual time=0.621..0.659 rows=666 loops=1)
+                                                                    Hash Cond: ((w.usuario_id = t.usuario_id) AND (w.empresa_id = o_1.empresa_id))
+                                                                    Buffers: shared hit=173
+                                                                    ->  Seq Scan on trabaja_en w  (cost=0.00..34.17 rows=806 width=7) (actual time=0.002..0.090 rows=806 loops=1)
+                                                                          Filter: actual
+                                                                          Rows Removed by Filter: 811
+                                                                          Buffers: shared hit=18
+                                                                    ->  Hash  (cost=123.46..123.46 rows=309 width=69) (actual time=0.472..0.472 rows=680 loops=1)
+                                                                          Buckets: 1024  Batches: 1  Memory Usage: 38kB
+                                                                          Buffers: shared hit=155
+                                                                          ->  Nested Loop  (cost=5.56..123.46 rows=309 width=69) (actual time=0.020..0.398 rows=680 loops=1)
+                                                                                Buffers: shared hit=155
+                                                                                ->  CTE Scan on o o_1  (cost=0.00..0.02 rows=1 width=64) (actual time=0.000..0.002 rows=1 loops=1)
+                                                                                ->  Nested Loop  (cost=5.56..120.35 rows=309 width=5) (actual time=0.019..0.355 rows=680 loops=1)
+                                                                                      Buffers: shared hit=155
+                                                                                      ->  CTE Scan on r  (cost=0.00..0.10 rows=5 width=35) (actual time=0.003..0.010 rows=5 loops=1)
+                                                                                            Buffers: shared hit=1
+                                                                                      ->  Memoize  (cost=5.56..34.37 rows=56 width=14) (actual time=0.012..0.060 rows=136 loops=5)
+                                                                                            Cache Key: r.nivel_minimo, r.habilidad_id
+                                                                                            Cache Mode: binary
+                                                                                            Hits: 0  Misses: 5  Evictions: 0  Overflows: 0  Memory Usage: 33kB
+                                                                                            Buffers: shared hit=154
+                                                                                            ->  Bitmap Heap Scan on tiene_habilidad t  (cost=5.55..34.36 rows=56 width=14) (actual time=0.011..0.050 rows=136 loops=5)
+                                                                                                  Recheck Cond: (habilidad_id = r.habilidad_id)
+                                                                                                  Filter: (nivel >= r.nivel_minimo)
+                                                                                                  Rows Removed by Filter: 65
+                                                                                                  Heap Blocks: exact=140
+                                                                                                  Buffers: shared hit=154
+                                                                                                  ->  Bitmap Index Scan on tiene_habilidad_habilidad_id_usuario_id_idx  (cost=0.00..5.53 rows=167 width=0) (actual time=0.009..0.009 rows=201 loops=5)
+                                                                                                        Index Cond: (habilidad_id = r.habilidad_id)
+                                                                                                        Buffers: shared hit=14
+                                                              ->  Index Scan using usuarios_pkey on usuarios u_1  (cost=0.28..0.32 rows=1 width=4) (actual time=0.001..0.001 rows=0 loops=666)
+                                                                    Index Cond: (id = t.usuario_id)
+                                                                    Filter: abierto_a_ofertas
+                                                                    Rows Removed by Filter: 1
+                                                                    Buffers: shared hit=1998
+                                                        ->  Index Only Scan using postula_a_pkey on postula_a p  (cost=0.14..0.18 rows=2 width=7) (actual time=0.001..0.001 rows=0 loops=250)
+                                                              Index Cond: (usuario_id = t.usuario_id)
+                                                              Heap Fetches: 51
+                                                              Buffers: shared hit=276
+              ->  Aggregate  (cost=55.64..55.65 rows=1 width=8) (actual time=0.013..0.013 rows=1 loops=113)
+                    Buffers: shared hit=2432
+                    ->  Hash Join  (cost=28.77..55.64 rows=1 width=0) (actual time=0.013..0.013 rows=0 loops=113)
+                          Hash Cond: (x.contacto_id = w_1.usuario_id)
+                          Buffers: shared hit=2432
+                          ->  Bitmap Heap Scan on conexiones x  (cost=4.36..31.20 rows=10 width=4) (actual time=0.002..0.003 rows=9 loops=113)
+                                Recheck Cond: (usuario_id = c.usuario_id)
+                                Heap Blocks: exact=511
+                                Buffers: shared hit=737
+                                ->  Bitmap Index Scan on conexiones_pkey  (cost=0.00..4.36 rows=10 width=0) (actual time=0.002..0.002 rows=9 loops=113)
+                                      Index Cond: (usuario_id = c.usuario_id)
+                                      Buffers: shared hit=226
+                          ->  Hash  (cost=23.91..23.91 rows=40 width=4) (actual time=0.009..0.009 rows=24 loops=113)
+                                Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                                Buffers: shared hit=1695
+                                ->  Bitmap Heap Scan on trabaja_en w_1  (cost=4.89..23.91 rows=40 width=4) (actual time=0.003..0.007 rows=24 loops=113)
+                                      Recheck Cond: (empresa_id = o.empresa_id)
+                                      Filter: actual
+                                      Rows Removed by Filter: 29
+                                      Heap Blocks: exact=1469
+                                      Buffers: shared hit=1695
+                                      ->  Bitmap Index Scan on trabaja_en_empresa_id_usuario_id_idx  (cost=0.00..4.88 rows=81 width=0) (actual time=0.002..0.002 rows=53 loops=113)
+                                            Index Cond: (empresa_id = o.empresa_id)
+                                            Buffers: shared hit=226
+Planning:
+  Buffers: shared hit=40
+Planning Time: 1.470 ms
+Execution Time: 3.479 ms

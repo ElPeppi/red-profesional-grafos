@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+  --font-titulo: 'Segoe UI Variable Display', 'Segoe UI', system-ui, sans-serif;
+
+  --color-papel: #f6f4ee;
+  --color-tarjeta: #fffdf9;
+  --color-tinta: #1d2129;
+  --color-suave: #5c6170;
+  --color-borde: #e0dbcf;
+  --color-marca: #17665a;
+  --color-marca-fuerte: #0f4f45;
+  --color-marca-suave: #dcefe8;
+  --color-peligro: #ab3226;
+  --color-peligro-suave: #fbe9e6;
+}
+
+@layer base {
+  body {
+    @apply bg-papel font-sans text-tinta antialiased;
+  }
+
+  h1,
+  h2 {
+    @apply font-titulo;
+  }
+
+  button:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-marca);
+    outline-offset: 2px;
+  }
+
+  dialog::backdrop {
+    background: rgb(29 33 41 / 45%);
+  }
+}

@@ -1,0 +1,11 @@
+ProduceResults@neo4j saltos  (filas 1, db hits 0)
+  Projection@neo4j length(ruta) AS saltos  (filas 1, db hits 0)
+    Apply@neo4j  (filas 1, db hits 0)
+      CartesianProduct@neo4j  (filas 1, db hits 0)
+        NodeUniqueIndexSeek@neo4j UNIQUE a:Usuario(id) WHERE id = $a  (filas 1, db hits 2)
+        NodeUniqueIndexSeek@neo4j UNIQUE b:Usuario(id) WHERE id = $b  (filas 1, db hits 2)
+      Optional@neo4j a, b  (filas 1, db hits 0)
+        ShortestPath@neo4j ruta = (a)-[anon_0:CONECTA_CON*..6]-(b)  (filas 1, db hits 389)
+          Argument@neo4j a, b  (filas 1, db hits 0)
+
+Total db hits: 393
